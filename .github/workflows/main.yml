@@ -1,0 +1,23 @@
+mport pandas as pd
+import numpy as np
+
+Generar datos simulados
+np.random.seed(42)
+
+n = 1000
+data = {
+"price": np.random.randint(200000, 1500000, size=n),
+"sqft_living": np.random.randint(500, 5000, size=n),
+"bedrooms": np.random.randint(1, 6, size=n),
+"bathrooms": np.random.uniform(1, 4, size=n).round(1),
+"waterfront": np.random.choice([0, 1], size=n),
+"floors": np.random.randint(1, 3, size=n),
+"view": np.random.randint(0, 5, size=n),
+"grade": np.random.randint(1, 10, size=n),
+"lat": np.random.uniform(47.5, 48.0, size=n),
+"long": np.random.uniform(-122.5, -121.5, size=n),
+}
+
+df = pd.DataFrame(data)
+df.to_csv("viviendas.csv", index=False)
+print("Archivo 'viviendas.csv' generado con éxito.")
